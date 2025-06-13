@@ -1,0 +1,360 @@
+															Curso de React Native pelo canal OnebitCode
+																				
+													Curso disponibilizado por Felipe Moreira do Canal OneBitCode
+
+OBJETIVO:
+Iremos aprender os conceitos fundamentais do React Native com o objetivo de desenvolver aplicações mobiles..Com uma visão geral(OverView) sobre R.Native.
+
+O QUE É O REACT NATIVE: 
+É um FrameWork desenvolvido pelo FAcebook, que possibilita a criação de Aplicativos mobile(Android e IOS), utilizando da Linguagem JavaScript.
+
+COMO VAi FUNCIONAR:
+Serão 10 Aulas passo a passo;
+Mini Projeto durante as aulas;
+Projeto de Coclusão: App de cotação de Bitcoin(Estrutura de Projeto; Cosumo de API externa; Grafico; Hooks do React);
+Video + Texto de Acompanhamento.
+
+PARA QUEM ESSE CURSO É:
+Para pessoas que já tenha um conhecimento básico de JavaScript e React, pois o react native é uma basa pra construção de apps mobile(OBS: não sei nada de React).
+
+FERRAMENTAS QUE UTILIZAREMOS:
+VS Code;;
+Node Js;
+Expo.
+oque é Expo?
+É uma ferramenta de desenvolvimento em React Native.
+Porque usar o Expo?
+O Expo é uma ferramenta feita para facilitar o desenvolvimento de aplicações em react native, com sistemas internos que nos auxiliam.
+Quem usa Expo?
+Desenvolvedores.
+
+OBS:Ver a documentação do R.Native para uma melhor compreensão de seus funcionalidades.
+
+
+CONHECENDO A ESTRUTURA DO EXPO:
+Baixando Expo:
+Dentro de seu termila rode esse cófigo: 
+npm install --global expo-cli
+este comando ira baixar as feraamentas e comandos do Expo. OBS:não mexa durante a instalação para não dar erro.
+Criando um novo Projeto:
+dentro do seu terminal utilize ese comando:
+expo init nomeProjeto
+exemplo: expo init my-project, isso criará seu projeto
+Após isso aparecerá uma tela aonde você deverá escolher o template: BLANK. Ao carregar o seu template (Your project is ready!), você irá entrar dentro da sua pasta..no meu caso (cd my-project). 
+Após isso seu projeto já está prtonto pra ser manipulado!
+
+ENTENDENDO A ESTRUTURA DE UM PROJETO:
+Seu projeto
+ASSETS;
+//onde fica os icones
+NODE_MODULES;
+GIT.IGNORE;
+//arquivos padrao..já configurados(N Mexa)
+APP.JS;
+//Muito importânte pois é onde fica nosso código..estrutura principal
+APP.JSON;
+onde ficam as dependencias..tambem já padrao...um dos arq mais importantes pois é onde o expo vai buscar as informações para gerar nosso apk.(MEXEREMOS AO FINAL)
+INDEX.JS;
+PACKAGE-LOCK.JSON
+PACKEGE.JSON
+
+
+ESTRUTURA DO APP.JS:
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, Text, View } from 'react-native';
+
+export default function App() {
+return (
+<View style={styles.container}>
+<Text>Open up App.js to start working on your app!</Text>
+<StatusBar style="auto" />
+</View>
+);
+}
+
+const styles = StyleSheet.create({
+container: {
+flex: 1,
+backgroundColor: '#fff',
+alignItems: 'center',
+justifyContent: 'center',
+},
+});
+
+OBS: View e Text são duas funções já do R.N, a View é como se fosse uma Div e text é para colocar um texto.
+
+COMO RODAR ESSE SITEMA NO CELULAR:
+1- Verifique se está no arq do seu projeto no termial,caso não use o comando:
+cd nomeDoSeuProjeto;
+1- Use o camando : npm start (no terminal);
+irá abrir o navegador e dentro do navegado com seu cel conectados a mesma rede utilize o QR Code;
+
+AULA 01 PRIMEIROS PASSOS COM EACT NATIVE  -FEITA !!
+
+AULA 02 - PRIMEIROS COMPONENTES DO REACT NATIVE
+
+COMPONENTES:
+Comonentes são usados para a costrução do Layout do app, cada um posui uma função especifica.
+os componentes são divididos em duas partes
+Componetes Básicos:
+View
+Quando declarada, cria-se um espeço para que possa ser manipulado seu interior.
+Image:
+Serve para trabalhar com imagens
+Scrollview:
+Serve para Rolar a tela(scrollar), já padronizada pelo R.N ao adicionar componentes a tela.
+Text:
+Adiciona um texto
+text Input:
+Inserção de texto pelo usuário dentro de uma caixa de texo. servindo também para caixas de numeros.
+Stylesheet:
+Criar estillos  nos componentes,app
+
+Componentes de Interface do usuário(Componetnes para o usuário interagir):
+Button:
+Botão
+Switch
+ativar ou desativar itens(trocar);
+
+OBS: nessa aula vamos desenvolver um aplcativo inicial onde vamos criar um layout com alguns componesntes e ele irá sevir para calcular o IMC de alguém;
+
+Crie uma nova pasta com um arq chamado onebithealth;
+
+
+
+PROJETO ONEBITHEALTH:
+Como de Padrão vemos que um arquivo app.js possui seus imports padão, e iremos criar um export default fnction app(){return(view com uma text dentro} , para não lotar muito nosso arq app, crie uma pasta src/componestes/Title e dentro desse Title um arq chamdo index.js dentro detro dese arquivo iremos manipunipular apenas o Titulo do nosso app, após criado vai no seu arq app e dentro da text dentro da view do seu arq app adicione o Title dessa forma <Title/>, não esqueça de importar dentro do app a pasta Title;
+
+CODIGO APP.JS e INDES.JS:
+APP.JS:
+
+import { StyleSheet,View } from 'react-native';
+import Title from './src/componentes/Title/';
+export default function App() {
+return (
+<View style={styles.container}>
+<Title/>
+</View>
+);
+}
+
+const styles = StyleSheet.create({
+container: {
+flex: 1,
+backgroundColor: '#fff',
+alignItems: 'center',
+justifyContent: 'center',
+},
+});
+
+INDEX.JS:
+import React from "react";
+import {View, Text} from 'react-native' ;
+
+export default function Title(){
+return(
+<View>
+<Text>ONEBITHEALTH</Text>
+</View>
+);
+
+}
+
+AULA 02 - FEITA !!
+
+AULA 02 - CONTUAÇÂO PARTE 1
+
+COMPLEMENTANDO APP:
+Adicionando uma pasta Main na pasta componentes para colocar o conteúdo principal, Dentro da Main vamos importar um componete chamado: Form, ele é usado dessa forma: <Form/>
+
+Dentro do arq index.js da pasta Form iremos criar um formulario, onde passaremos 3 views, una para exibição do texto com seus inputs, utilizando dentro delas : um text e TextInput, dntro desse Text input passaremos um placeholder='' colocar um texto de exemplo e um keyboardType='numeric';
+o keyboardType='' passa o tipo de teclado que será exibido no caso o numeric é pra valor numerico;
+
+
+OBS: dica caso queria mlehora um componente visualmente, ex:<TextInput
+placeholder='Ex: 75.365'
+keyboardType='numeric'
+></TextInput>
+
+você pode fazer isso
+<TextInput
+placeholder='Ex: 75.365'
+keyboardType='numeric'
+/>		
+assim você só digitsa uma vez o componente e fica agradvel visualmente;
+
+AULA -02 Parte 2 FEITA !!
+
+AULA 02 Parte 3- CONTINUANDO PROJETO 
+
+Componente useState: é uma função do R.N que permite que seja alterado o valor de uma variave e manipular ela;
+
+para importar um useState é : import {useState} from 'react-native', ele pode ser usadeo dessa forma :
+const [vquer, serVqquer] = useState(valor que quer)
+também pode usar dessa Forma React.useState(null)
+
+bom o useState nós iremos usar para pegar os vlaores da altura, peso, mensagem e o texto do botão para restar e alterar valor;
+
+
+Fução CalcularImc :   
+function calcularImc(){
+return setImc((weigth/(heigth^2)).toFixed(2))
+}
+
+Usamos o setImc para receber o valor de peso divido por altura ao quadrado, o retorno do resultado será em diversas casas decimais Para isso usamos o  .toFixed(qtd casas decimais q quer), ex .toFixed(2), para o resultado da fução ClacularImc ter apenas 2 casas decimais.
+------
+
+Função verificarImc:
+function verificarImc(){
+if(heigth != null && weigth != null){
+calcularImc();
+setHeight(null);
+setWeigth(null);
+setMessageImc(`Seu IMC é: ${imc}`);
+setTextButton("Calcular Novamente")
+return
+}else{
+setImc(null);
+setTextButton("Calcular");
+setMessageImc("Preencha o peso e altura")
+}
+}
+
+Nessa Função vamos verificar o estado dos nossos valores, onde se a altura e peso forem diferente de nulo ele irá execultar a função calcularImc(), após irá apgar os valores armazenados na altura e peso, caso o usuário digite novamentte e fazer o calculo novamente ele apenas indica ao usuario que é necessario digitar o peso e alt noamente...após isso vamos colocar o valor da IMC na tela e o botão fica calcular novamente pois o imc já terá sido execultado..por fim o return para retornar o que acontece-rá se for verdadeira a condição se, 
+Caso não seja verdadeira enviara ára o valor o Imc seré nulo , o botão ainda será Calcular e a messageimc será preecha peso e altura.
+
+-----
+
+Componete onChangetext: 
+o que acontece é que quando o valor for inserido ou alterado essa informçaõ fica no onChangeText, por costume ele sempre fica como  parametro do Componete Text, dai todo valor alterado na text fica armazenado nele, ex:
+<Tetx
+onChagetext={setHeigth} //para enviar o valor para a altura
+quando se altread o estado da var com o onChageText é necessario alterar  valor, usamos o
+value={Height}
+/>
+
+Dentro do Botão(Button), precisamos passar o onPress={()=>} e um title
+ex :
+<Button
+onPress={()=. validadrImc()} // quando clicar no botão ele irá execultar a função chamada
+Titile={textButton} // Dentro do botão fica o valor entre aspas, ou algum componente definifaentre{componente}
+/>
+----
+
+
+CÓDIGO DO <FORM/> ,  <MAIN/> e <RESULTIMC/>:
+
+FORM:	
+
+import React from 'react';
+import { useState } from 'react';
+import {View, Text, TextInput, Button} from 'react-native' ;
+import ResultIMC from '../ResultImc/';
+export default function Form(){
+
+//Variaveis cada uma com valor especifico para Pegar valores e alteralos
+const [heigth, setHeight] = useState(null); //também pode usar dessa Forma React.useState(null)
+const [weigth, setWeigth] = useState(null);
+const [messageImc, setMessageImc] = useState('Preencha o peso e altura');
+const [imc, setImc] = useState(null);
+const [textButton, setTextButton] = useState('Calcular');
+
+function calcularImc(){
+return setImc((weigth/(heigth^2)).toFixed(2));
+}
+
+function verificarImc(){
+if(heigth != null && weigth != null){
+calcularImc();
+setHeight(null);
+setWeigth(null);
+setMessageImc(`Seu IMC é:`);
+setTextButton("Calcular Novamente")
+return
+}else{
+setImc(null);
+setTextButton("Calcular");
+setMessageImc("Preencha o peso e altura")
+}
+}
+
+return(
+<View>
+<View>
+<Text>Altura</Text>
+<TextInput
+onChangeText={setHeight}
+value={heigth}
+placeholder='Ex: 1.75'
+keyboardType='numeric'
+/>
+
+<Text>Peso</Text>
+<TextInput
+onChangeText={setWeigth}
+value={weigth}
+placeholder='Ex: 75.365'
+keyboardType='numeric'
+/>
+<Button 
+onPress={() => verificarImc()} // quando clicar no botão ele irá execultar a função chamada
+title={textButton} />
+</View>
+<ResultIMC messageResultImc={messageImc} resultImc={imc}/>
+</View>
+);
+
+}	
+--------
+
+MAIN:
+import React from 'react';
+import {View} from 'react-native' ;
+import Form from '../Form/';
+
+
+export default function Main(){
+return(
+<View>
+<Form/>
+</View>
+);
+
+}
+---
+RESULTIMC:
+import React from "react";
+import { View ,Text } from "react-native";
+
+export default function ResultIMC(props){
+return(
+<View>
+<Text>{props.messageResultImc}</Text>
+<Text>{props.resultImc}</Text>
+</View>
+)
+}
+
+
+OBS: Proxima Aula veremos mais sobre StyleSheet em R.N e formas utilizar seus componntes!!
+
+AULa 02 Pt 3 FEITA !!
+
+DESAFIO PROPOSTO: Entrar na documentação do R.N e ver sobre StyleSheets e tentar estilizar Seu APP, pode ser o app disponibilizado na própria documentação do R.N.
+
+
+AULA 03 - DESIGN DO AP PT1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
