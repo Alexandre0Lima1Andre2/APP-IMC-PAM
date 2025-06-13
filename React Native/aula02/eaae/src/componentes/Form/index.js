@@ -36,7 +36,7 @@ export default function Form(){
             <View>
                 <Text>Altura</Text>
                 <TextInput
-                style={{padding: 20}}
+                style={{padding: 10, margin: 10, borderRadius: 10, border: 'solid'}}
                 onChangeText={setHeight}
                 value={heigth}
                 placeholder='Ex: 1.75'
@@ -45,13 +45,15 @@ export default function Form(){
 
                 <Text>Peso</Text>
                 <TextInput
-                style={{borderRadius: 10,padding: 20, color: 'red'}}
+                style={{borderRadius: 10,padding: 10, margin: 10, border: 'solid'}}
                 onChangeText={setWeigth}
                 value={weigth}
                 placeholder='Ex: 75.365'
                 keyboardType='numeric'
                  />
-                 <Button 
+                 <Button
+                 color="red"
+                 borderRadius='50px'
                  onPress={() => verificarImc()} // quando clicar no botão ele irá execultar a função chamada
                  title={textButton} />
             </View>
