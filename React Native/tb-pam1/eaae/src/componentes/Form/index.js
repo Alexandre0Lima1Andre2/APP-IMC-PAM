@@ -1,8 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
-import {View, Text, TextInput, Button} from 'react-native' ;
+import {View, Text, TextInput, TouchableOpacity, StyleSheet} from 'react-native' ;
 import ResultIMC from '../ResultImc/';
-import { ImageBackground } from 'react-native-web';
 export default function Form(){
 
     //Variaveis cada uma com valor especifico para Pegar valores e alteralos
@@ -21,7 +20,7 @@ export default function Form(){
             calcularImc();
             setHeight(null);
             setWeigth(null);
-            setMessageImc(`Seu IMC é:`);
+            setMessageImc(`Seu IMC é: `);
             setTextButton("Calcular Novamente")
             return
         }else{
@@ -33,29 +32,30 @@ export default function Form(){
 
     return(
         <View>
-            <View>
-                <Text>Altura</Text>
+            <View style={styles.container}>
+                <Text style={styles.txtInput}>Altura</Text>
                 <TextInput
-                style={{padding: 10, margin: 10, borderRadius: 10, border: 'solid'}}
+                style={styles.input}
                 onChangeText={setHeight}
                 value={heigth}
                 placeholder='Ex: 1.75'
                 keyboardType='numeric'
                  />
 
-                <Text>Peso</Text>
+                <Text style={styles.txtInput}>Peso</Text>
                 <TextInput
-                style={{borderRadius: 10,padding: 10, margin: 10, border: 'solid'}}
+                style={styles.input}
                 onChangeText={setWeigth}
                 value={weigth}
                 placeholder='Ex: 75.365'
                 keyboardType='numeric'
-                 />
-                 <Button
-                 color="red"
-                 borderRadius='50px'
-                 onPress={() => verificarImc()} // quando clicar no botão ele irá execultar a função chamada
-                 title={textButton} />
+                 />                 <TouchableOpacity
+                 style={styles.btn}
+                 accessibilityLabel='Calcular IMC'
+                 onPress={() => verificarImc()}
+                 >
+                    <Text style={styles.btnText}>{textButton}</Text>
+                 </TouchableOpacity>
             </View>
             <ResultIMC messageResultImc={messageImc} resultImc={imc}/>
         </View>
@@ -63,8 +63,42 @@ export default function Form(){
     
 }
 
-// const style = StyleSheet.create ({
-//     input: {
-        
-//     }
-// }) ;
+const styles = StyleSheet.create ({
+    container:{
+    backgroundColor: '#fff',
+    borderRadius: 20,
+    padding: 30,
+    },
+    txtInput:{
+        color: '#000',
+        fontSize: 17,
+        fontWeight: 350,
+        marginLeft: 2,
+        textAlign: 'left',
+    },
+    input: {
+        padding: 12,
+        marginTop: 10,
+        marginBottom: 10,
+        borderRadius: 20,
+        border: 'solid 2px grey',
+        placeholderTextColor: 'grey',
+        position: 'relative',
+    },   
+     btn:{
+        top: 19,
+        borderRadius: 20,
+        padding: 12,
+        backgroundColor: '#000080',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '99%',
+        position: 'relative',
+        marginBottom: 10,
+    },
+    btnText: {
+        color: '#fff',
+        fontSize: 16,
+        fontWeight: 'bold',
+    }
+}) ;
